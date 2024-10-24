@@ -13,7 +13,7 @@
 <!-- 2. nivojski razdelek -->
 ## Izvorna koda
 
-<kbd> Včasih pride prav značka kbd za tipke. Značko uporabimo takole:</kbd>
+Včasih pride prav značka <kbd>Ctrl</kbd> za tipke. Značko uporabimo takole: 
 
 <!-- začetek bloka z izvorno kodo -->
 <kbd>Ctrl</kbd>

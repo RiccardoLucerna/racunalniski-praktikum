@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[a4paper,10pt]{article}
 
 % NALOGA 1
 % Vključite pakete za podporo slovenščini,
@@ -364,14 +364,17 @@ Na primeru urnika si oglejmo, katere so smiselne operacije:
 
 % Vsaka od vrstic v okolju `itemize` je en element naštevanja.
 % začetek okolja itemize
-   /Vstavljanje/ srečanja v urnik.
-   /Brisanje/ srečanja iz urnika.
-   /Zamenjava/ dveh srečanj v urnik.
+\begin{itemize}
+   \item /Vstavljanje/ srečanja v urnik.
+   \item /Brisanje/ srečanja iz urnika.
+   \item /Zamenjava/ dveh srečanj v urnik.
+\end{itemize}
 % konec okolja itemize
 
 % Spodnja vrstica ne začne novega odstavka, zato ne bi smela biti zamaknjena.
 % To popravite z ukazom `\noindent` ali pa tako, da odstranite prazno vrstico.
 % (Nekoliko lepše izgleda, če v prazno vrstico vstavite % za komentar.)
+%
 /Okolica/ operacije je množica vseh možnih sprememb, ki jih lahko s to operacijo
 opravimo na nekem koraku optimizacijskega postopka. Okolica zamenjave dveh srečanj v urniku
 je torej množica vseh možnih zamenjav srečanj v trenutnem urniku.
@@ -393,45 +396,48 @@ je hitro pripeljalo do lokalnega maksimuma, iz katerega pa se je bilo nemogoče 
 je najboljša rešitev iz okolice lokalnega maksimuma ponavadi kar lokalni maksimum sam.
 Nadgradnja lokalnega vzpenjanja je jasno razvidna iz naslednje sheme.
 
-% začetek okolja verbatim
-(1) Izvajaj dokler...
-{
-   (2) Iz sistema okolic izberi okolico.
-   (3) Iz okolice izberi spremembo.
-   (4) Izvedi spremembo.
-}
-% konec okolja verbatim
+\begin{verbatim}
+   % začetek okolja verbatim
+   (1) Izvajaj dokler...
+   {
+      (2) Iz sistema okolic izberi okolico.
+      (3) Iz okolice izberi spremembo.
+      (4) Izvedi spremembo.
+   }
+   % konec okolja verbatim
+\end{verbatim}
 
 % Spodnja vrstica ne začne novega odstavka, zato ne bi smela biti zamaknjena.
 % To popravite z ukazom `\noindent` ali pa tako, da odstranite prazno vrstico.
 % (Nekoliko lepše izgleda, če v prazno vrstico vstavite % za komentar.)
+%
 Nadobudnežem priporočamo, da najprej sami razmislijo, kaj je globja vsebina posameznih
 korakov, in si šele nato ogledajo njihov natančen opis.
 
-% začetek okolja enumerate
-   Zunanjo zanko izvajamo, dokler ne dosežemo enega izmed ustavitvenih pogojev.
+\begin{enumerate}
+   \item Zunanjo zanko izvajamo, dokler ne dosežemo enega izmed ustavitvenih pogojev.
    Če nekaj časa kljub spreminjanju operacij nad urnikom vedno znova obstojimo na isti
    rešitvi, potem to najverjetneje pomeni, da smo prišli do lokalnega ekstrema. Drugi
    ustavitveni pogoj je zadovoljivo velika vrednost kriterijske funkcije.
 
-   Naključno izberemo okolico trenutne rešitve. Z okolico izberemo tudi operacijo,
+   \item Naključno izberemo okolico trenutne rešitve. Z okolico izberemo tudi operacijo,
    ki jo izvajamo na tem koraku (npr. zamenjava dveh srečanj).
 
-   Če v tem koraku izberemo tisto zamenjavo srečanj, ki izmed vseh možnih najbolj
+   \item Če v tem koraku izberemo tisto zamenjavo srečanj, ki izmed vseh možnih najbolj
    poveča vrednost kriterijske funkcije, potem postopamo enako, kot požrešna metoda. Če
    želimo nadgraditi postopek lokalnega vzpenjanja, ne potrebujemo nujno najboljše možne
    zamenjave, ampak prvo, ki poveča vrednost kriterijske funkcije. Izjemoma dovolimo tudi
    tisto zamenjavo, ki vrednost kriterijske funkcije nekoliko zmanjša, kar se na prvi
    pogled zdi nesmiselno, nas pa dolgoročno pripelje do boljših rešitev.
 
-   Izbrano zamenjavo dveh srečanj izvedemo na trenutnem urniku. Vidimo, da en korak
+   \item Izbrano zamenjavo dveh srečanj izvedemo na trenutnem urniku. Vidimo, da en korak
    lokalnega vzpenjanja res predstavlja eno spremembo nad urnikom, v konkretnem primeru
    smo izvedli (eno) zamenjavo dveh srečanj.
-% konec okolja enumerate
-
+\end{enumerate}
 % Spodnja vrstica ne začne novega odstavka, zato ne bi smela biti zamaknjena.
 % To popravite z ukazom `\noindent` ali pa tako, da odstranite prazno vrstico.
 % (Nekoliko lepše izgleda, če v prazno vrstico vstavite % za komentar.)
+%
 Na tak način izboljšana metoda lokalnega vzpenjanja je časovno veliko zahtevnejša od
 požrešne metode, saj se vrednost kriterijske funkcije ne povečuje tako drastično. Vseeno
 pa vidimo, da se počasi približujemo lokalnemu maksimumu in sčasoma nas bo postopek
@@ -477,14 +483,14 @@ Za konec si oglejmo, kako je videti optimizacijski del algoritma za iskanje najb
 urnika, pri čemer je najboljši urnik tisti, ki s kršenjem omejitev pridobi najmanj negativnih
 točk, oziroma ki ima največjo vrednost kriterijske funkcije.
 
-% začetek okolja verbatim
-(1) r = rešitev, dobljena s požrešno metodo.
-(2) Izvajaj, dokler...
-{
-   (3) Z optimizacijo izboljšaj r.
-   (4) Oceni r.
-}
-% začetek okolja verbatims
+\begin{verbatim}
+   (1) r = rešitev, dobljena s požrešno metodo.
+   (2) Izvajaj, dokler...
+   {
+      (3) Z optimizacijo izboljšaj r.
+      (4) Oceni r.
+   }
+\end{verbatim}
 
    V prvem koraku izvedemo požrešno metodo, ki rešitev urnika pripelje v lokalni maksimum.
 
@@ -502,6 +508,7 @@ točk, oziroma ki ima največjo vrednost kriterijske funkcije.
 % Spodnja vrstica ne začne novega odstavka, zato ne bi smela biti zamaknjena.
 % To popravite z ukazom `\noindent` ali pa tako, da odstranite prazno vrstico.
 % (Nekoliko lepše izgleda, če v prazno vrstico vstavite % za komentar.)
+%
 To je le ena izmed možnosti, kako zastaviti optimizacijski potek, s katero smo želeli predstaviti
 simbiozo opisanih metod. Nič ne bi bilo narobe, če bi za iskanje najboljšega urnika posamično
 uporabili katero izmed tehnik - mogoče bi katero izmed teh postopanj dalo celo boljši rezultat.
@@ -510,8 +517,8 @@ uporabili katero izmed tehnik - mogoče bi katero izmed teh postopanj dalo celo 
 
 % V spodnjem odstavku naj bodo črke G, U in I v "Graphical User Interface" podčrtane.
 Sledili smo receptu in s tem izdelali "okusen obrok", treba ga je le še ustrezno postreči
-gostom za mizo. S tem imamo v mislih grafični uporabniški vmesnik (Graphical
-User Interface), ki mora urnik uporabnikom predstaviti na razumljiv in
+gostom za mizo. S tem imamo v mislih grafični uporabniški vmesnik (\underline{G}raphical
+\underline{U}ser \underline{I}nterface), ki mora urnik uporabnikom predstaviti na razumljiv in
 pregleden način. Končnega izgleda izdelka nikakor ne smemo zanemariti, saj je ta med uporabniki
 vreden skoraj toliko kot kakovosten urnik. Odločili smo se, da za razmišljanje o tej temi vaši
 domišljiji pustimo prosto pot.

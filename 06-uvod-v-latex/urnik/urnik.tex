@@ -140,7 +140,7 @@ katere podatke naj vsebujejo.
 Kar pri treh razredih je kot podatek navedena tabela zasedenosti, zato si jo podrobneje
 oglejmo. Vsako tabelo določata njena velikost ter tip vrednosti. Naslednji izračun nam
 poda velikost tabele:
-??
+$$\texttt{velikostTabele} = \texttt{številoUrNaDan}\cdot\texttt{številoDelovnihDni}$$
 Če bi predpostavili, da študijski dan traja od sedme ure zjutraj do osmih zvečer in da
 imamo pet delovnih dni, je velikost naše tabele 65 polj. Velikost te tabele torej pove,
 koliko ur na teden obravnavamo. Ker se šolski tedni periodično ponavljajo, je seveda
@@ -249,10 +249,10 @@ takrat, ko algoritem v osnovi ne zadosti strogim omejitvam urnika.
 Ko enkrat ustrezno nastavimo vrednosti uteži, je treba ugotoviti, kako bomo postopali
 v nadaljevanju. Algoritem za izdelavo urnikov je najbolje zasnovati tako, da po vsaki
 spremembi izmeri njegovo kakovost. Tako moramo na vsakem koraku ugotavljati, katere
-omejitve so bile kršene ter kolikokrat se kršitev pojavi. S ?? označimo število
-kršitev omejitve ??, z ?? pa njeno utež. Z naslednjo formulo izračunamo
+omejitve so bile kršene ter kolikokrat se kršitev pojavi. S $k_n$ označimo število
+kršitev omejitve $n$, z $u_n$ pa njeno utež. Z naslednjo formulo izračunamo
 kakovost urnika:
-??
+$$k_1\cdot u_1+k_2\cdot u_2+\cdots +k_{n-1}\cdot u_{n-1}+k_n\cdot u_n$$
 Nižja vrednost formule pomeni kakovostnejši urnik, izračunamo pa jo na vsakem koraku.
 Korak pri izdelavi urnika predstavlja eno izmed operacij nad njim (označuje njegovo
 spremembo).
@@ -327,29 +327,30 @@ Naslednje vrstice bodo pojasnile, kako implementirati postopek požrešne metode
 %
 Zgoraj predstavljena shema je le grob opis postopka, ki ga nad urnikom izvaja požrešna metoda,
 zato si je smiselno podrobneje ogledati posamezne korake.
+\begin{enumerate}
+   \item Z zanko se sprehodimo po vektorju vseh predmetov. Predmet na $i$-tem koraku
+   označimo s $\texttt{predmet}_i$.
 
-   Z zanko se sprehodimo po vektorju vseh predmetov. Predmet na ??-tem koraku
-   označimo s ??.
+   \item Naslednja vgnezdena zanka nas popelje po vseh predavalnicah. Predavalnico na
+   $j$-tem koraku označimo s $\texttt{predavalnica}_j$.
 
-   Naslednja vgnezdena zanka nas popelje po vseh predavalnicah. Predavalnico na
-   ??-tem koraku označimo s ??.
-
-   Za vse proste termine ?? izračunamo ceno vstavljanja
-   ??, ki ga sestavlja ??, profesor, ki ta predmet predava,
+   \item Za vse proste termine $\texttt{predavalnice}_j$ izračunamo ceno vstavljanja
+   $\texttt{srečanja}_i$, ki ga sestavlja $\texttt{predmet}_i$, profesor, ki ta predmet predava,
    ter skupina, kateri je predmet namenjen.
 
-   Če je trenutna cena boljša od najboljše dosedanje, potem najboljša dosedanja
+   \item Če je trenutna cena boljša od najboljše dosedanje, potem najboljša dosedanja
    dobi vrednost trenutne. Hkrati si zapomnimo, za kateri termin smo izračunali ceno
-   vstavljanja, da bomo ?? na koncu vstavili v termin z najboljšo
+   vstavljanja, da bomo $\texttt{predmet}_i$ na koncu vstavili v termin z najboljšo
    ceno vstavljanja.
 
-   Ko preverimo vse proste termine vseh predavalnic, vstavimo ??
+   \item Ko preverimo vse proste termine vseh predavalnic, vstavimo $\texttt{srečanje}_i$
    v termin z najboljšo ceno.
 
-   Sedaj se ponovno vrnemo na začetek in pogledamo najugodnejši termin za naslednji
+   \item Sedaj se ponovno vrnemo na začetek in pogledamo najugodnejši termin za naslednji
    predmet. Postopek ponavljamo, dokler se zunanja zanka, ki se sprehaja po vseh predmetih,
    ne zaključi. S tem smo namreč v urnik vstavili vse predmete.
 
+\end{enumerate}
 \subsection{Optimizacijske metode }
 
 Optimizacijske metode se že desetletja uporabljajo za reševanje optimizacijskih problemov.
@@ -455,9 +456,9 @@ sistematičen način odpraviti to težavo.
 Glede na to, da bi naj iskanje s tabuji odpravilo problem vračanja v isti lokalni maksimum,
 prepovedujemo izvajanje sprememb, s katerimi bi se vrnili v že najden lokalni maksimum.
 
-Rešitev se ponuja kar sama - za naslednjih ?? korakov prepovemo vsako spremembo, ki jo
-opravimo v koraku optimizacije. Izbira konstante ?? je odvisna od samega problema, saj
-ne obstaja neki splošen ??, ki bi nas v vsakem primeru pripeljal iz lokalnega ekstrema.
+Rešitev se ponuja kar sama - za naslednjih $n$ korakov prepovemo vsako spremembo, ki jo
+opravimo v koraku optimizacije. Izbira konstante $n$ je odvisna od samega problema, saj
+ne obstaja neki splošen $n$, ki bi nas v vsakem primeru pripeljal iz lokalnega ekstrema.
 Imamo torej seznam prepovedanih sprememb - /tabujev/ in na vsakem koraku za izbrano
 spremembo preverimo, če je element seznama tabujev. Če spremembe ni v seznamu tabujev, jo
 preprosto izvedemo, v primeru, da je, pa postopek vrnemo na iskanje druge spremembe.
@@ -465,11 +466,11 @@ Algoritem iskanja s tabuji se od lokalnega vzpenjanja torej razlikuje le v tem, 
 izbiro spremembe preveri, če je vsebovana v seznamu prepovedanih sprememb. Poglejmo, zakaj
 je takšno postopanje smiselno.
 
-Naj bo ?? ter ?? sprememba urnika, ki nas je pripeljala v lokalni maksimum. To
-spremembo (npr. zamenjava ?? in ??) sedaj shranimo v
-seznam tabujev. V naslednjem koraku izvedemo spremembo ??, ki se prav tako shrani v
+Naj bo $n=100$ ter $s_1$ sprememba urnika, ki nas je pripeljala v lokalni maksimum. To
+spremembo (npr. zamenjava $\texttt{srečanja}_i$ in $\texttt{srečanja}_j$) sedaj shranimo v
+seznam tabujev. V naslednjem koraku izvedemo spremembo $s_2$, ki se prav tako shrani v
 seznam prepovedanih sprememb. Podobno naredimo za vse spremembe v nadaljnih korakih. S
-tem poskrbimo, da se lahko v isti lokalni maksimum vrnemo šele čez ?? korakov, saj
+tem poskrbimo, da se lahko v isti lokalni maksimum vrnemo šele čez $n=100$ korakov, saj
 se sprememba ??, ki vodi do lokalnega maksimuma, šele tedaj izbriše iz seznama
 prepovedanih sprememb.
 

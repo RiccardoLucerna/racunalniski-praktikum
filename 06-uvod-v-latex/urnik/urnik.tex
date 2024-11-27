@@ -471,10 +471,10 @@ spremembo (npr. zamenjava $\texttt{srečanja}_i$ in $\texttt{srečanja}_j$) seda
 seznam tabujev. V naslednjem koraku izvedemo spremembo $s_2$, ki se prav tako shrani v
 seznam prepovedanih sprememb. Podobno naredimo za vse spremembe v nadaljnih korakih. S
 tem poskrbimo, da se lahko v isti lokalni maksimum vrnemo šele čez $n=100$ korakov, saj
-se sprememba ??, ki vodi do lokalnega maksimuma, šele tedaj izbriše iz seznama
+se sprememba $s_1$, ki vodi do lokalnega maksimuma, šele tedaj izbriše iz seznama
 prepovedanih sprememb.
 
-Če smo dosegli lokalni maksimum in vrednost kriterijske funkcije v ?? korakih uspemo
+Če smo dosegli lokalni maksimum in vrednost kriterijske funkcije v $n$ korakih uspemo
 rešiti iz okolice tega lokalnega maksimuma, potem se je metoda iskanja s tabuji izkazala
 kot uspešna.
 
@@ -497,14 +497,14 @@ točk, oziroma ki ima največjo vrednost kriterijske funkcije.
 
    Zanko izvajamo, dokler ne dosežemo enega izmed ustavitvenih pogojev.
 
-   Rešitev ??, ki smo jo dobili s pomočjo požrešne metode, izboljšamo z lokalnim vzpenjanjem
+   Rešitev $r$, ki smo jo dobili s pomočjo požrešne metode, izboljšamo z lokalnim vzpenjanjem
    ali iskanjem s tabuji. Kot je že bilo povedano, je iskanje s tabuji nekoliko primernejša metoda,
    saj nas bo lažje pripeljala iz lokalnega maksimuma, do katerega smo prišli s požrešno metodo.
    Vsekakor pa ni nič narobe, če srečo poskusimo tudi z lokalnim vzpenjanjem.
 
-   Na vsakem koraku ocenimo izboljšamo rešitev ??. Če je vrednost kriterijske funkcije
+   Na vsakem koraku ocenimo izboljšamo rešitev $r$. Če je vrednost kriterijske funkcije
    za trenutno rešitev prešla zastavljeno zadovoljivo mejo, potem se program zaključi. Prav tako
-   se zaključi, če po ?? korakih še vedno tičimo v istem lokalnem maksimumu.
+   se zaključi, če po $n$ korakih še vedno tičimo v istem lokalnem maksimumu.
 
 % Spodnja vrstica ne začne novega odstavka, zato ne bi smela biti zamaknjena.
 % To popravite z ukazom `\noindent` ali pa tako, da odstranite prazno vrstico.
